@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { get } from 'http';
 import { AppService } from './app.service';
 
@@ -18,5 +18,24 @@ export class AppController {
   @Get("/ruta/")  //ruta funcionado con slash o sin el
   hello(){
     return "soy una ruta con slash"
+  }
+
+  //RUTAS CON EL DECORADOR PARAM
+  //FORMA 1)-
+  // @Get("products/:productId")
+  // getProduct(@Param() params: any){
+  //   return `product ${params.productId}`
+  // }
+
+  //FORMA 2)-
+  @Get("products/:productId")
+  getProduct(@Param("productId") productId: string){
+    return `producto ${productId}`
+  }
+
+  //RUTAS CON DECORADOR PARAMS, EN EL CASO QUE NECESITEMOS DOS PARAMETROS
+  @Get("categories/:id/products/:productId")
+  getCategories(@Param("productId") productId: string, @Param("id") id: string){
+    return `producto ${productId} y ${id}`
   }
 }
