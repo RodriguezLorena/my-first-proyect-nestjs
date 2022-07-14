@@ -1,0 +1,17 @@
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255),
+    Description text
+);
+
+CREATE TABLE Otra (
+    id integer,
+    nombre varchar(255),
+    apellido varchar(255),
+    direccion varchar(255),
+    ciudad varchar(255),
+    Description text
+);
