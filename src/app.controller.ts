@@ -21,44 +21,5 @@ export class AppController {
     return 'soy una ruta con slash';
   }
 
-  //RUTAS CON EL DECORADOR PARAM
-  //FORMA 1)-
-  // @Get("products/:productId")
-  // getProduct(@Param() params: any){
-  //   return `product ${params.productId}`
-  // }
-
-  //RUTA NO DINAMICA
-  @Get("products/filter")
-  getProductFilter(){
-    return "soy una ruta de filter, no dinamica "
-  }
-
-  //FORMA 2)-
-  @Get('products/:productId')
-  getProduct(@Param('productId') productId: string) {
-    return `producto ${productId}`;
-  }
-
-  //RUTAS CON DECORADOR PARAMS, EN EL CASO QUE NECESITEMOS DOS PARAMETROS
-  @Get('categories/:id/products/:productId')
-  getCategories(
-    @Param('productId') productId: string,
-    @Param('id') id: string,
-  ) {
-    return `producto ${productId} y ${id}`;
-  }
-
-  //RUTA PARA RESOLVER VARIOS PRODUCTOS POR @QUERY
-  @Get('products')
-  getProducts(
-    @Query('limite') limite: number,
-    @Query('copias') copias: number,
-    @Query('marca') marca: string,
-  ) {
-    return `producto: soy el limit => ${limite}. Soy el offset => ${copias}, esto es la marca ${marca}`;
-  }
-
   //CHOQUES DE RUTAS: CUANDO TENEMOS CHOQUE DE RUTAS, TENEMOS QUE ASEGURARNOS QUE LAS RUTAS DINAMICAS ESTEN DEBAJO DE LAS FIJAS
 }
-
